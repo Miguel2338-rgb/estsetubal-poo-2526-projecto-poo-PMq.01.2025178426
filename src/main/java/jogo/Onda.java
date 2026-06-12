@@ -68,7 +68,6 @@ public class Onda {
             }
         }
 
-        // Update all enemies
         for (Inimigo e : inimigos) e.update();
     }
 

@@ -28,7 +28,6 @@ public abstract class Inimigo {
         this.chegouABase = false;
         this.morto = false;
 
-        // Start at first path cell
         if (!caminho.isEmpty()) {
             Point start = caminho.get(0);
             x = start.x * Mapa.CELL_SIZE + Mapa.CELL_SIZE / 2.0;
@@ -101,7 +100,6 @@ public abstract class Inimigo {
         return danoBase;
     }
 
-    // Progress 0.0 to 1.0
     public double getProgresso() {
         return (double) pathIndex / Math.max(1, caminho.size() - 1);
     }

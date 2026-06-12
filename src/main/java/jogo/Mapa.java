@@ -20,8 +20,6 @@ public class Mapa {
     }
 
     private void buildMap() {
-        // Build a winding path
-        // Path goes: left side down, then right, then down, then right to base
         int[][] pathCoords = {
                 {0,0},{1,0},{2,0},{3,0},{4,0},{5,0},{6,0},
                 {6,1},{6,2},{6,3},{6,4},{6,5},{6,6},
@@ -42,7 +40,6 @@ public class Mapa {
                 caminho.add(new Point(col, row));
             }
         }
-        // Mark base at end
         Point last = caminho.get(caminho.size() - 1);
         grid[last.y][last.x] = 2;
     }

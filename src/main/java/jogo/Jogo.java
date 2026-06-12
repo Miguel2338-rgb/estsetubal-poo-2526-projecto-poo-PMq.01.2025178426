@@ -2,8 +2,6 @@ package jogo;
 
 
 import entidades.*;
-
-import java.awt.Point;
 import java.util.*;
 
 public class Jogo {
@@ -18,7 +16,6 @@ public class Jogo {
     private Estado estado;
     private List<Projetil> projeteis;
 
-    // Listeners
     private Runnable onUpdate;
 
     public Jogo() {
@@ -52,7 +49,6 @@ public class Jogo {
 
         ondaAtual.update();
 
-        // Towers attack
         for (Torre t : torres) {
             Inimigo hit = t.attack(ondaAtual.getInimigos());
             if (hit != null) {
@@ -64,32 +60,30 @@ public class Jogo {
             }
         }
 
-        // Collect rewards and process base hits
         for (Inimigo e : ondaAtual.getInimigos()) {
             if (e.estaMorto()) {
-                // reward already granted? use flag
             }
         }
         processRewards();
 
-        // Process enemies reaching base
+        List<Inimigo> remover = new ArrayList<>();
+
         for (Inimigo e : ondaAtual.getInimigos()) {
             if (e.chegouABase()) {
                 jogador.perderVida(e.getDanoBase());
-                e.receberDano(99999); // remove from game
+                remover.add(e);
             }
         }
 
-        // Update projectiles
+        ondaAtual.getInimigos().removeAll(remover);
+
         projeteis.removeIf(p -> { p.update(); return !p.isAtivo(); });
 
-        // Check defeat
         if (!jogador.estaVivo()) {
             estado = Estado.DERROTA;
             return;
         }
 
-        // Check wave complete
         if (ondaAtual.estaCompleta()) {
             if (numeroOnda >= TOTAL_ONDAS) {
                 estado = Estado.VITORIA;

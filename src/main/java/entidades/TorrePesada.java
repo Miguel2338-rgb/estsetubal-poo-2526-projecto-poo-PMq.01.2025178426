@@ -31,19 +31,15 @@ public class TorrePesada extends Torre {
             g.setStroke(new BasicStroke(1f));
         }
 
-        // Heavy base
         g.setColor(new Color(100, 50, 20));
         g.fillRoundRect(px + 4, py + 4, cs - 8, cs - 8, 4, 4);
 
-        // Tower body
         g.setColor(getCor());
         g.fillRoundRect(px + 8, py + 8, cs - 16, cs - 16, 6, 6);
 
-        // Big barrel
         g.setColor(new Color(80, 40, 10));
         g.fillRect(px + cs / 2 - 3, py + cs / 2 - 4, cs / 2 - 2, 9);
 
-        // Level dots
         for (int i = 0; i < nivel; i++) {
             g.setColor(new Color(255, 80, 0));
             g.fillOval(px + 8 + i * 9, py + cs - 14, 6, 6);

@@ -73,7 +73,6 @@ public class GamePanel extends JPanel {
             }
         }
 
-        // Draw start marker
         List<Point> caminho = mapa.getCaminho();
         if (!caminho.isEmpty()) {
             Point start = caminho.get(0);

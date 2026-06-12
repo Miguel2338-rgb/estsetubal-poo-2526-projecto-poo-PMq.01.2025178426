@@ -31,19 +31,15 @@ public class TorreRapida extends Torre {
             g.setStroke(new BasicStroke(1f));
         }
 
-        // Base
         g.setColor(new Color(40, 100, 160));
         g.fillRoundRect(px + 6, py + 6, cs - 12, cs - 12, 8, 8);
 
-        // Tower body
         g.setColor(getCor());
         g.fillRoundRect(px + 10, py + 10, cs - 20, cs - 20, 6, 6);
 
-        // Barrel (pointing right)
         g.setColor(new Color(30, 80, 130));
         g.fillRect(px + cs / 2, py + cs / 2 - 3, cs / 2 - 4, 6);
 
-        // Level dots
         drawLevelDots(g, px, py, cs);
 
         g.setColor(Color.WHITE);

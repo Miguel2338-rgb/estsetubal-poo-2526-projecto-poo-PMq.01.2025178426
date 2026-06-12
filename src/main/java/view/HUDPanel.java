@@ -19,7 +19,6 @@ public class HUDPanel extends JPanel {
     private JButton btnRapida, btnPesada, btnFranco;
     private JButton btnUpgrade, btnVender;
     private JLabel lblTorreSel;
-    private JPanel infoTorresPanel;
 
     private String tipoSelecionado = null;
 
@@ -39,7 +38,6 @@ public class HUDPanel extends JPanel {
         top.setLayout(new BoxLayout(top, BoxLayout.Y_AXIS));
         top.setOpaque(false);
 
-        // Title
         JLabel title = new JLabel("⚔ Defend the Kingdom", SwingConstants.CENTER);
         title.setFont(new Font("Serif", Font.BOLD, 14));
         title.setForeground(new Color(255, 210, 80));
@@ -47,7 +45,6 @@ public class HUDPanel extends JPanel {
         top.add(title);
         top.add(Box.createVerticalStrut(10));
 
-        // Stats
         top.add(makeStatLabel("💰 Moedas:"));
         lblMoedas = makeValueLabel("0");
         top.add(lblMoedas);
@@ -69,20 +66,17 @@ public class HUDPanel extends JPanel {
         top.add(lblOnda);
         top.add(Box.createVerticalStrut(10));
 
-        // Wave button
         btnIniciarOnda = new JButton("▶ Iniciar Onda");
         styleButton(btnIniciarOnda, new Color(60, 140, 60));
         btnIniciarOnda.addActionListener(e -> gameWindow.iniciarOnda());
         top.add(btnIniciarOnda);
         top.add(Box.createVerticalStrut(12));
 
-        // Separator
         JSeparator sep = new JSeparator();
         sep.setForeground(new Color(80, 70, 100));
         top.add(sep);
         top.add(Box.createVerticalStrut(8));
 
-        // Tower placement
         JLabel torresTitle = new JLabel("🏰 Colocar Torres", SwingConstants.CENTER);
         torresTitle.setFont(new Font("Arial", Font.BOLD, 12));
         torresTitle.setForeground(new Color(200, 200, 255));

@@ -61,7 +61,6 @@ public class GameWindow extends JFrame {
 
                 if (col < 0 || col >= Mapa.COLS || row < 0 || row >= Mapa.ROWS) return;
 
-                // Check if clicking on existing tower
                 Torre t = jogo.getTorreNaPosicao(col, row);
                 if (t != null) {
                     gamePanel.setTorreSelecionada(t);
@@ -70,7 +69,6 @@ public class GameWindow extends JFrame {
                     return;
                 }
 
-                // Place tower
                 String tipo = hudPanel.getTipoSelecionado();
                 if (tipo != null) {
                     boolean ok = jogo.colocarTorre(col, row, tipo);
@@ -79,7 +77,6 @@ public class GameWindow extends JFrame {
                     }
                     hudPanel.atualizar();
                 } else {
-                    // Deselect
                     gamePanel.setTorreSelecionada(null);
                     hudPanel.atualizar();
                 }
