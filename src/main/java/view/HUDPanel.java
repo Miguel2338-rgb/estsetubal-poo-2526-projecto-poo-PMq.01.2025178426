@@ -129,11 +129,39 @@ public class HUDPanel extends JPanel {
 
         add(top, BorderLayout.NORTH);
 
-        // Bottom hint
+        // Bottom: hint + quit button
+        JPanel bottom = new JPanel();
+        bottom.setLayout(new BoxLayout(bottom, BoxLayout.Y_AXIS));
+        bottom.setOpaque(false);
+
         JLabel hint = new JLabel("<html><center>Clique no mapa verde<br>para colocar torre</center></html>", SwingConstants.CENTER);
         hint.setForeground(new Color(120, 120, 140));
         hint.setFont(new Font("Arial", Font.ITALIC, 10));
-        add(hint, BorderLayout.SOUTH);
+        hint.setAlignmentX(CENTER_ALIGNMENT);
+        bottom.add(hint);
+
+        bottom.add(Box.createVerticalStrut(10));
+
+        JSeparator sepBottom = new JSeparator();
+        sepBottom.setForeground(new Color(80, 70, 100));
+        bottom.add(sepBottom);
+
+        bottom.add(Box.createVerticalStrut(8));
+
+        JButton btnSair = new JButton("✕  Sair do Jogo");
+        styleButton(btnSair, new Color(160, 40, 40));
+        btnSair.addActionListener(e -> {
+            int opt = JOptionPane.showConfirmDialog(
+                    HUDPanel.this,
+                    "Tens a certeza que queres sair?",
+                    "Sair do Jogo",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.WARNING_MESSAGE);
+            if (opt == JOptionPane.YES_OPTION) System.exit(0);
+        });
+        bottom.add(btnSair);
+
+        add(bottom, BorderLayout.SOUTH);
     }
 
     private JLabel makeStatLabel(String text) {
