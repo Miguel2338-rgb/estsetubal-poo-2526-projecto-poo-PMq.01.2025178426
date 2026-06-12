@@ -1,16 +1,25 @@
 package entidades;
 
-import utils.Posicao;
+import java.awt.*;
+import java.util.List;
 
 public class InimigoRapido extends Inimigo {
-    private double fatorVelocidade;
-
-    public InimigoRapido(Posicao inicial) {
-        super(15, 1.5, 5, inicial);
-        this.fatorVelocidade = 1.3;
+    public InimigoRapido(List<Point> caminho) {
+        super(caminho, 70, 2.5, 12, 1);
     }
+
     @Override
-    public void mover(){
-        posicaoAtual = new Posicao(posicaoAtual.getX(), posicaoAtual.getY());
+    public Color getCor() {
+        return new Color(80, 180, 80);
+    }
+
+    @Override
+    public String getNome() {
+        return "Goblin";
+    }
+
+    @Override
+    public int getRaio() {
+        return 10;
     }
 }

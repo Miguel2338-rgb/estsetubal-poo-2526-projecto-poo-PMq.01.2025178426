@@ -1,16 +1,14 @@
 package entidades;
 
-import utils.Posicao;
+import java.awt.*;
+import java.util.List;
 
-public class InimigoLento extends Inimigo{
-    private double fatorResistencia;
+public class InimigoLento extends Inimigo {
+    public InimigoLento(List<Point> caminho) {
+        super(caminho, 180, 1.2, 26, 2);
+    }
 
-    public InimigoLento(Posicao inicial) {
-        super(30, 0.5, 10, inicial);
-        this.fatorResistencia = 0.8;
-    }
-    @Override
-    public void mover() {
-        posicaoAtual = new Posicao(posicaoAtual.getX(), posicaoAtual.getY());
-    }
+    @Override public Color getCor() { return new Color(180, 60, 60); }
+    @Override public String getNome() { return "Golem"; }
+    @Override public int getRaio() { return 14; }
 }
